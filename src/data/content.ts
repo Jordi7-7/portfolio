@@ -117,7 +117,7 @@ export const t = {
     ],
     jobs: [
       {
-        when: 'Ene 2026 — Sep 2026',
+        when: 'Ene 2026 — Ago 2026',
         what: 'Desarrollador Full Stack',
         where: 'ITS Utransfer',
         points: [
@@ -262,7 +262,7 @@ export const t = {
     ],
     jobs: [
       {
-        when: 'Jan 2026 — Sep 2026',
+        when: 'Jan 2026 — Aug 2026',
         what: 'Full Stack Developer',
         where: 'ITS Utransfer',
         points: [
