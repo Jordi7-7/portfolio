@@ -1,0 +1,20 @@
+---
+import { langs } from '../lib/i18n';
+import { t } from '../data/content';
+import { sectionNumber } from '../lib/nav';
+import ProjectFilters from './ProjectFilters.astro';
+import ProjectCard from './ProjectCard.astro';
+---
+{langs.map((l) => (
+  <section data-l={l} id={l === 'es' ? 'work' : undefined} data-projects>
+    <div class="wrap pb-10" data-reveal>
+      <h2 class="label pb-4">{sectionNumber('work')} · {t[l].work}</h2>
+      <p class="disp text-[clamp(2.4rem,7vw,6.2rem)]">{t[l].workNote}</p>
+    </div>
+    <ProjectFilters l={l} />
+    <ol class="wrap">
+      {t[l].projects.map((p, i) => <ProjectCard l={l} p={p} index={i} />)}
+    </ol>
+    <p class="wrap pt-10 label" data-empty hidden>{t[l].filterEmpty}</p>
+  </section>
+))}

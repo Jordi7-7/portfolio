@@ -1,0 +1,23 @@
+---
+import type { Lang } from '../lib/i18n';
+import { caps } from '../data/ui';
+import { iconPath } from '../lib/icons';
+
+interface Props { l: Lang }
+const { l } = Astro.props;
+---
+<div data-l={l} class="stats">
+  <div class="wrap grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+    {caps[l].map(([title, items]) => (
+      <div class="stat">
+        <span class="label !text-fg">{title}</span>
+        <ul class="flex flex-wrap gap-x-4 gap-y-2">
+          {items.map(([label, key]) => {
+            const path = iconPath(key);
+            return <li class="tech-i !text-fg">{path && <svg viewBox="0 0 24 24" aria-hidden="true"><path d={path} /></svg>}{label}</li>;
+          })}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>

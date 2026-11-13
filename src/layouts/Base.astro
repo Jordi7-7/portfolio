@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Aplica idioma y tema guardados antes de pintar, para evitar parpadeos -->
+    <script is:inline>
+      try {
+        const l = localStorage.getItem('lang') || (navigator.language || 'es').slice(0, 2);
+        document.documentElement.lang = l === 'en' ? 'en' : 'es';
+        const th = localStorage.getItem('theme');
+        if (th) document.documentElement.dataset.theme = th;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>

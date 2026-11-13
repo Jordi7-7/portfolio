@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+import Lightbox from '../components/Lightbox.astro';
+---
+<Base
+  title="Jordi Cahuasqui · Ingeniero de Software"
+  description="Portafolio de Jordi Cahuasqui, ingeniero de software. Backend NestJS, FinTech, móvil y proyectos."
+>
+  <Header />
+  <main id="top">
+    <Hero />
+    <!-- Orden de las secciones: mantén el mismo orden en src/lib/nav.ts -->
+    <About />
+    <Projects />
+    <Experience />
+  </main>
+  <Contact />
+  <Lightbox />
+</Base>

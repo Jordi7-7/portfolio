@@ -1,0 +1,40 @@
+---
+import type { Lang } from '../lib/i18n';
+import { t } from '../data/content';
+import { techMap } from '../lib/icons';
+import MediaFrame from './MediaFrame.astro';
+import ArchDiagram from './ArchDiagram.astro';
+
+type Project = (typeof t)['es']['projects'][number];
+interface Props { l: Lang; p: Project; index: number }
+const { l, p, index } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+---
+<li class="proj" data-item data-tech={p.tech.join(' ')}>
+  <div class:list={['grid gap-8 lg:gap-12 pt-10 md:pt-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]', p.featured ? 'pb-8' : 'pb-10 md:pb-14']}>
+    <MediaFrame l={l} id={p.id} title={p.title} />
+    <div class="flex flex-col gap-4 min-w-0">
+      <div class="flex flex-wrap items-center gap-x-4 label"><span class="text-fg">P-{num}</span><span>{p.year}</span><span>{p.kicker}</span></div>
+      <h3 class:list={['disp-n', p.featured ? 'text-[clamp(2.6rem,6vw,5rem)]' : 'text-[clamp(1.8rem,3.2vw,2.6rem)]']}>{p.title}</h3>
+      <p class:list={['text-mute', p.featured ? 'max-w-[44rem] text-lg' : 'max-w-[36rem]']}>{p.desc}</p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 pt-1">
+        {p.tech.map((id) => (
+          <li class="tech-i" data-ti={id}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={techMap[id].path} /></svg>{techMap[id].label}</li>
+        ))}
+      </ul>
+      <div class="flex flex-wrap gap-2 pt-2">
+        {p.links.map((k) => <a class="plink" href={k.href} target="_blank" rel="noopener">{k.label} ↗</a>)}
+      </div>
+    </div>
+  </div>
+  {p.featured && (
+    <div class="grid gap-10 pb-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-12 items-start">
+      <ArchDiagram />
+      {p.facts && (
+        <dl class="facts grid gap-x-8 gap-y-4 sm:grid-cols-2 pt-2 max-w-[50rem]">
+          {p.facts.map((f) => <div><dt class="label">{f.k}</dt><dd class="text-[.95rem]">{f.v}</dd></div>)}
+        </dl>
+      )}
+    </div>
+  )}
+</li>

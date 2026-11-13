@@ -1,0 +1,18 @@
+---
+import type { Lang } from '../lib/i18n';
+import { term } from '../data/ui';
+
+interface Props { l: Lang }
+const { l } = Astro.props;
+const tm = term[l];
+---
+<div data-l={l} class="term" data-term>
+  <div class="term-bar"><i></i><i></i><i></i><span class="burl">jordi@portfolio ~ %</span></div>
+  <div class="term-body">
+    <p class="term-line"><span class="term-p">$</span> <span data-cmd>{tm.cmds[0]}</span><span class="caret" aria-hidden="true"></span></p>
+    {tm.out.map((o, i) => <pre class="term-out" data-out={i} hidden={i !== 0}>{o}</pre>)}
+  </div>
+  <div class="term-cmds" role="group" aria-label={tm.hint}>
+    {tm.cmds.map((c, i) => <button type="button" data-run={i} aria-pressed={i === 0 ? 'true' : 'false'}>{c}</button>)}
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portafolio personal de Jordi Cahuasqui: Astro, Tailwind 4 y GSAP, bilingüe ES/EN.",
+  "author": "Jordi Cahuasqui",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jordi7-7/portfolio.git"
+  },
+  "type": "module",
+  "packageManager": "pnpm@11.17.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.10",
+    "gsap": "^3.15.1",
+    "simple-icons": "^16.37.0",
+    "tailwindcss": "^4.3.5"
+  }
+}

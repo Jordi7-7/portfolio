@@ -1,0 +1,26 @@
+---
+import type { Lang } from '../lib/i18n';
+import { t, techs } from '../data/content';
+import { techMap, techCounts } from '../lib/icons';
+
+interface Props { l: Lang }
+const { l } = Astro.props;
+const total = t[l].projects.length;
+---
+<div class="filters">
+  <div class="wrap py-3 flex flex-col gap-2">
+    <div class="flex items-center justify-between gap-4">
+      <span class="label">{t[l].filterTitle}</span>
+      <span class="label" data-count data-tpl={t[l].filterCount}>{t[l].filterCount.replace('{n}', String(total)).replace('{total}', String(total))}</span>
+    </div>
+    <div class="scroller" role="group" aria-label={t[l].filterTitle}>
+      <button type="button" class="badge badge-all" data-all aria-pressed="true">{t[l].filterAll}<sup>{total}</sup></button>
+      {techs.map((x) => (
+        <button type="button" class="badge" data-tech-btn={x.id} aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d={techMap[x.id].path} /></svg>
+          {x.label}<sup>{techCounts[x.id]}</sup>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>

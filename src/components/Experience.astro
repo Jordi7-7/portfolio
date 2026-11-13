@@ -1,0 +1,36 @@
+---
+import { langs } from '../lib/i18n';
+import { t } from '../data/content';
+import { sectionNumber } from '../lib/nav';
+---
+{langs.map((l) => (
+  <section data-l={l} id={l === 'es' ? 'exp' : undefined} class="wrap py-24 md:py-32">
+    <div class="pb-12" data-reveal>
+      <h2 class="label pb-4">{sectionNumber('exp')} · {t[l].exp}</h2>
+      <p class="disp text-[clamp(2.4rem,7vw,6.2rem)]">{t[l].exp}</p>
+    </div>
+    <ol>
+      {t[l].jobs.map((j) => (
+        <li class="job" data-reveal>
+          <span class="label pt-2">{j.when}</span>
+          <div class="flex flex-col gap-3 min-w-0">
+            <h3 class="disp-n text-[clamp(1.5rem,2.8vw,2.2rem)]">{j.what}</h3>
+            <p class="label !text-fg">{j.where}</p>
+            <ul class="dash flex flex-col gap-2 text-mute max-w-[42rem] pt-1">
+              {j.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="grid gap-0 md:grid-cols-3 mt-16 border border-line" data-reveal>
+      {t[l].awards.map((a) => (
+        <div class="p-5 md:border-r border-line last:border-r-0 border-b md:border-b-0 last:border-b-0">
+          <p class="label pb-2">{a.when}</p>
+          <p class="font-medium leading-snug">{a.what}</p>
+          <p class="text-mute text-sm pt-1">{a.where}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+))}

@@ -1,0 +1,30 @@
+---
+import { langs } from '../lib/i18n';
+import { nav, navLabel } from '../lib/nav';
+---
+<div id="progress" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap flex items-center justify-between gap-4 h-[3.35rem]">
+    <a href="#top" class="mono text-sm font-medium" aria-label="Inicio">JC<span class="text-accent">/</span>PORTFOLIO</a>
+    <nav class="hidden md:flex gap-7 label" aria-label="Secciones">
+      {langs.map((l) => (
+        <span data-l={l} class="flex gap-7">
+          {nav.map((n) => <a class="navlink" href={`#${n.id}`}>{navLabel(n.key, l)}</a>)}
+        </span>
+      ))}
+    </nav>
+    <div class="flex items-center gap-4 label">
+      <button id="lang" class="ulink hover:text-fg" aria-label="Cambiar idioma / Switch language"><span data-l="es">EN</span><span data-l="en">ES</span></button>
+      <span aria-hidden="true">/</span>
+      <button id="theme" class="ulink hover:text-fg" aria-label="Tema / Theme">◐</button>
+      <button id="menu" class="md:hidden border border-line px-2 py-1" aria-expanded="false" aria-controls="mnav" aria-label="Menú / Menu">☰</button>
+    </div>
+  </div>
+  <nav id="mnav" class="mnav md:hidden" hidden aria-label="Secciones">
+    {langs.map((l) => (
+      <div data-l={l} class="wrap flex flex-col">
+        {nav.map((n) => <a href={`#${n.id}`}>{navLabel(n.key, l)}</a>)}
+      </div>
+    ))}
+  </nav>
+</header>

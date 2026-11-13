@@ -1,0 +1,42 @@
+---
+import { langs } from '../lib/i18n';
+import { profile, t } from '../data/content';
+import { ui } from '../data/ui';
+import Terminal from './Terminal.astro';
+import Capabilities from './Capabilities.astro';
+---
+<section class="sheet" id="sheet">
+  <span class="reg" style="left:10px;top:10px"></span>
+  <span class="reg" style="right:10px;top:10px"></span>
+  <div class="wrap pt-12 pb-12 md:pt-16 md:pb-16 grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:items-center">
+    <div class="flex flex-col gap-7 min-w-0">
+      {langs.map((l) => (
+        <p data-l={l} class="label flex flex-wrap items-center gap-x-4 gap-y-2">
+          <span class="pill"><i class="pulse"></i>{t[l].status}</span>
+          <span>{t[l].location}</span>
+        </p>
+      ))}
+      <h1 class="name2" data-hero>
+        <span class="n1">Jordi</span>
+        <span class="n2">Cahuasqui</span>
+      </h1>
+      {langs.map((l) => (
+        <p data-l={l} class="disp-n text-[1.3rem] md:text-[1.75rem] max-w-[32ch] !normal-case !font-semibold">
+          {t[l].role}. {t[l].heroLead} <span class="text-accent">{t[l].heroEm}</span> {t[l].heroTail}
+        </p>
+      ))}
+      <div class="flex flex-wrap gap-3">
+        {langs.map((l) => (
+          <>
+            <a data-l={l} class="btn btn-solid" href={profile.cv[l]}>{ui[l].cv} ↓</a>
+            <a data-l={l} class="btn" href={`mailto:${profile.email}`}>{ui[l].mail}</a>
+          </>
+        ))}
+        <a class="btn" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href={profile.github} target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    {langs.map((l) => <Terminal l={l} />)}
+  </div>
+  {langs.map((l) => <Capabilities l={l} />)}
+</section>

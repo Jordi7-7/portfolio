@@ -1,0 +1,24 @@
+---
+import { langs } from '../lib/i18n';
+import { profile, t } from '../data/content';
+import { sectionNumber } from '../lib/nav';
+---
+{langs.map((l) => (
+  <section data-l={l} id={l === 'es' ? 'contact' : undefined} class="contact">
+    <div class="wrap py-20 md:py-32 flex flex-col gap-10">
+      <p class="label">{sectionNumber('contact')} · {t[l].contact}</p>
+      <h2 class="disp text-[clamp(2.4rem,8.4vw,7.5rem)] max-w-[14ch]">{t[l].contactLead}</h2>
+      <div class="flex flex-wrap items-center gap-3">
+        <a class="btn btn-solid" href={`mailto:${profile.email}`}>{t[l].contactCta} →</a>
+        <button class="btn" data-copy={profile.email} data-done={t[l].copied}>{t[l].copy}</button>
+        <a class="btn" href={profile.cv[l]}>{t[l].cvBtn}</a>
+      </div>
+      <p class="mono select-all text-sm break-all">{profile.email}</p>
+      <div class="flex flex-wrap gap-6 label pt-8 border-t border-[color-mix(in_srgb,var(--bg)_30%,transparent)]">
+        <a class="ulink" href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        <a class="ulink" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <span class="sm:ml-auto">© 2026 {profile.name}</span>
+      </div>
+    </div>
+  </section>
+))}

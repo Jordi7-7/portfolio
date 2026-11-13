@@ -1,0 +1,29 @@
+---
+// Marco de navegador con capturas (pestañas + visor) o, si no hay, una lámina esquemática.
+import type { Lang } from '../lib/i18n';
+import { ui } from '../data/ui';
+import { plates } from '../data/plates';
+import { shotsOf, shotLabel } from '../lib/media';
+
+interface Props { l: Lang; id: string; title: string }
+const { l, id, title } = Astro.props;
+const shots = shotsOf(id);
+const label = (key: string) => shotLabel[key]?.[l] ?? key;
+---
+<div class="media min-w-0" data-media>
+  <div class="bframe">
+    <div class="bbar"><i></i><i></i><i></i><span class="burl">{title} · {shots.length ? ui[l].shot : ui[l].plate}</span></div>
+    <div class="bbody">
+      {shots.length ? shots.map((s, k) => (
+        <button type="button" class="shot" data-shot data-full={s.src} data-alt={`${title}, ${label(s.key)}`} hidden={k !== 0} aria-label={`${ui[l].open}: ${label(s.key)}`}>
+          <img src={s.src} alt={`${title}, ${label(s.key)}`} loading="lazy" decoding="async" />
+        </button>
+      )) : <div class="plateb" set:html={plates[id]?.()} />}
+    </div>
+  </div>
+  {shots.length > 1 && (
+    <div class="tabs" role="tablist">
+      {shots.map((s, k) => <button type="button" role="tab" data-tab={k} aria-selected={k === 0 ? 'true' : 'false'}>{label(s.key)}</button>)}
+    </div>
+  )}
+</div>

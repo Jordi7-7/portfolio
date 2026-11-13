@@ -1,0 +1,18 @@
+---
+// PLANTILLA para una sección nueva. Copia este archivo, renómbralo (p. ej. Certifications.astro) y sigue la guía del README.
+// El prefijo "_" solo indica que es una plantilla; no se usa en la página.
+import { langs } from '../lib/i18n';
+import { t } from '../data/content';
+import { sectionNumber } from '../lib/nav';
+
+// 1. Cambia 'about' por el id de tu sección (el mismo que pongas en src/lib/nav.ts).
+const ID = 'about' as const;
+---
+{langs.map((l) => (
+  // data-l muestra solo la versión del idioma activo. El id va solo en la versión 'es' para que no se repita.
+  <section data-l={l} id={l === 'es' ? ID : undefined} class="wrap py-20 md:py-28" data-reveal>
+    <h2 class="label pb-4">{sectionNumber(ID)} · {t[l][ID]}</h2>
+    <p class="disp text-[clamp(2.4rem,7vw,6.2rem)]">{t[l][ID]}</p>
+    <!-- 2. Aquí va el contenido: usa t[l].tuClave para los textos. -->
+  </section>
+))}
