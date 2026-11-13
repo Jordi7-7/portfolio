@@ -15,11 +15,11 @@ const num = String(index + 1).padStart(2, '0');
     <MediaFrame l={l} id={p.id} title={p.title} />
     <div class="flex flex-col gap-4 min-w-0">
       <div class="flex flex-wrap items-center gap-x-4 label"><span class="text-fg">P-{num}</span><span>{p.year}</span><span>{p.kicker}</span></div>
-      <h3 class:list={['disp-n', p.featured ? 'text-[clamp(2.6rem,6vw,5rem)]' : 'text-[clamp(1.8rem,3.2vw,2.6rem)]']}>{p.title}</h3>
+      <h3 class:list={['disp-n', p.featured ? 'text-[clamp(2.4rem,5vw,4.2rem)]' : 'text-[clamp(1.7rem,3vw,2.3rem)]']}>{p.title}</h3>
       <p class:list={['text-mute', p.featured ? 'max-w-[44rem] text-lg' : 'max-w-[36rem]']}>{p.desc}</p>
-      <ul class="flex flex-wrap gap-x-5 gap-y-2 pt-1">
+      <ul class="flex flex-wrap gap-2 pt-1">
         {p.tech.map((id) => (
-          <li class="tech-i" data-ti={id}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={techMap[id].path} /></svg>{techMap[id].label}</li>
+          <li class="tech-i" data-ti={id} style={`--c:${techMap[id].color}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={techMap[id].path} /></svg>{techMap[id].label}</li>
         ))}
       </ul>
       <div class="flex flex-wrap gap-2 pt-2">

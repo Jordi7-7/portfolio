@@ -11,7 +11,17 @@ const custom: Record<string, string> = {
   bars: 'M4 20V10h4v10H4zm6 0V4h4v16h-4zm6 0v-7h4v7h-4z',
 };
 
-const icons = si as unknown as Record<string, { path: string } | undefined>;
+const icons = si as unknown as Record<string, { path: string; hex: string } | undefined>;
+
+// Color de marca de lo que simple-icons no incluye.
+const customHex: Record<string, string> = { bars: 'F2C811', db: 'F80000' };
+
+/** Color de marca (hex sin #). Si es casi negro devuelve null: en ese caso se usa el color del texto. */
+export const brandColor = (key: string): string | null => {
+  const hex = customHex[key] ?? (key ? icons['si' + key]?.hex : undefined) ?? customHex.db;
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b < 60 ? null : '#' + hex;
+};
 
 /** Ruta SVG de un icono: clave de simple-icons sin el prefijo "si", o una clave propia ('db', 'bars'); '' = sin icono. */
 export const iconPath = (key: string): string | undefined =>
@@ -19,7 +29,7 @@ export const iconPath = (key: string): string | undefined =>
 
 /** Tecnologías que sirven de filtro, con su icono resuelto. */
 export const techMap = Object.fromEntries(
-  techs.map((x) => [x.id, { ...x, path: iconPath(x.icon) ?? dbPath }]),
+  techs.map((x) => [x.id, { ...x, path: iconPath(x.icon) ?? dbPath, color: brandColor(x.icon || 'db') ?? 'var(--fg)' }]),
 );
 
 /** Cuántos proyectos usan cada tecnología (los ids son iguales en todos los idiomas). */

@@ -7,7 +7,7 @@ import { sectionNumber } from '../lib/nav';
   <section data-l={l} id={l === 'es' ? 'about' : undefined} class="wrap py-20 md:py-28 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-24 items-start" data-reveal>
     <div class="flex flex-col gap-6 min-w-0">
       <h2 class="label">{sectionNumber('about')} · {t[l].about}</h2>
-      <p class="disp-n text-[clamp(1.9rem,3.8vw,3.1rem)]">{t[l].aboutP1}</p>
+      <p class="disp-n !font-semibold text-[clamp(1.6rem,3.2vw,2.6rem)]">{t[l].aboutP1}</p>
       <p class="text-mute max-w-[34rem]">{t[l].aboutP2}</p>
     </div>
     <dl class="min-w-0">

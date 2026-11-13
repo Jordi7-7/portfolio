@@ -16,7 +16,7 @@ const total = t[l].projects.length;
     <div class="scroller" role="group" aria-label={t[l].filterTitle}>
       <button type="button" class="badge badge-all" data-all aria-pressed="true">{t[l].filterAll}<sup>{total}</sup></button>
       {techs.map((x) => (
-        <button type="button" class="badge" data-tech-btn={x.id} aria-pressed="false">
+        <button type="button" class="badge" data-tech-btn={x.id} aria-pressed="false" style={`--c:${techMap[x.id].color}`}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d={techMap[x.id].path} /></svg>
           {x.label}<sup>{techCounts[x.id]}</sup>
         </button>
