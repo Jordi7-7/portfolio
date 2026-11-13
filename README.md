@@ -10,7 +10,7 @@ Bilingüe (ES/EN), con modo claro/oscuro y pensado para que un reclutador entien
 - **Héroe con terminal interactiva** (`whoami`, `stack`, `experiencia`, `contacto`) y bloque de tecnologías con iconos.
 - **Proyectos filtrables por tecnología**: badges con icono y contador; al activar uno (o varios) se muestran solo los proyectos que lo usan.
 - **Galería por proyecto**: marco de navegador con pestañas y visor ampliado. Si un proyecto no tiene captura, usa una lámina esquemática.
-- **Diagrama de arquitectura** dibujado con SVG para el proyecto principal (Aura POS).
+- **Diagrama de arquitectura** dibujado con SVG para el proyecto principal (POS Store).
 - **Experiencia y reconocimientos** en formato de tabla de especificaciones.
 - **Selector de idioma ES/EN**, tema claro/oscuro, barra de progreso, menú móvil y sección activa en el menú.
 - **Accesible y rápido**: HTML estático, foco visible, respeto a `prefers-reduced-motion`, sin dependencias de UI en el cliente salvo GSAP.

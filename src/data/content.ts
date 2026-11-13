@@ -20,7 +20,7 @@ export const t = {
     aboutP1:
       'Me gusta convertir problemas reales en soluciones que funcionan. Trabajo duro, aprendo rápido y no paro hasta entregar algo sólido, de la idea a producción.',
     aboutP2:
-      'Ingeniero de Software por la UTN. He llevado a producción sistemas de finanzas digitales y de control de asistencia, y ahora construyo Aura POS, un POS/ERP completo con API, web y móvil.',
+      'Ingeniero de Software por la UTN. He llevado a producción sistemas de finanzas digitales y de control de asistencia, y ahora construyo POS Store, un POS/ERP completo con API, web y móvil.',
     work: 'Proyectos',
     workNote: 'Selección reciente',
     stack: 'Stack',
@@ -49,8 +49,8 @@ export const t = {
     theme: 'Tema',
     projects: [
       {
-        id: 'aura',
-        title: 'Aura POS',
+        id: 'pos-store',
+        title: 'POS Store',
         kicker: 'Sistema POS / ERP multitenant · Proyecto principal',
         desc: 'Plataforma SaaS para tiendas: ventas con turnos de caja, inventario por sucursal con costo FIFO, compras, catálogo con variantes, clientes, proveedores, reportes y panel. Cada tienda queda aislada de las demás y cada usuario ve solo sus sucursales. Incluye API, web, app móvil y despliegue con Docker.',
         year: '2026',
@@ -165,7 +165,7 @@ export const t = {
     aboutP1:
       'I like turning real problems into solutions that work. I work hard, learn fast and do not stop until I deliver something solid, from idea to production.',
     aboutP2:
-      'Software Engineer from UTN. I have taken digital finance and attendance-tracking systems to production, and now I am building Aura POS, a complete POS/ERP with API, web and mobile.',
+      'Software Engineer from UTN. I have taken digital finance and attendance-tracking systems to production, and now I am building POS Store, a complete POS/ERP with API, web and mobile.',
     work: 'Projects',
     workNote: 'Recent selection',
     stack: 'Stack',
@@ -194,8 +194,8 @@ export const t = {
     theme: 'Theme',
     projects: [
       {
-        id: 'aura',
-        title: 'Aura POS',
+        id: 'pos-store',
+        title: 'POS Store',
         kicker: 'Multitenant POS / ERP system · Main project',
         desc: 'SaaS platform for stores: sales with cash shifts, per-branch inventory with FIFO costing, purchasing, catalog with variants, customers, suppliers, reports and dashboard. Each store is isolated from the others and each user only sees their branches. Includes API, web, mobile app and Docker deployment.',
         year: '2026',
